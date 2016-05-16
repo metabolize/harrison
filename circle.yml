@@ -14,5 +14,4 @@ dependencies:
 
 test:
   override: # rather than using their autodetected steps, use these instead
-    - rake unittest
     - rake lint
