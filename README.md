@@ -58,7 +58,6 @@ Development
 
 ```sh
 pip install -r requirements_dev.txt
-rake unittest
 rake lint
 ```
 
