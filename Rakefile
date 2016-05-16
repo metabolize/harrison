@@ -35,6 +35,10 @@ def command_is_in_path?(command)
     system("which #{ command} > /dev/null 2>&1")
 end
 
+task :unittest do
+  raise unless system "nose2"
+end
+
 task :lint => :require_style_config do
   raise unless system "bodylabs-python-style/bin/pylint_test harrison --min_rating 10.0"
 end
