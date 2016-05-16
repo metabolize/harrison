@@ -4,7 +4,7 @@ __version__ = '1.0.1'
 
 
 class Timer(object):
-    """Times a block of code.
+    """Time a block of code.
     """
     def __init__(self, desc='', verbose=True):
         self.desc = desc
