@@ -17,7 +17,7 @@ setup(
     author_email='david.smith@bodylabs.com, paul.melnikow@bodylabs.com',
     description='Time a block of code',
     long_description=long_description,
-    url='https://github.com/bodylabs/env-flag',
+    url='https://github.com/bodylabs/harrison',
     license='MIT',
     py_modules=[
         'harrison',
