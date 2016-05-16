@@ -42,7 +42,7 @@ def print_registry(logger=None):
         log('"{}": {} ms ({})'.format(desc, total, num_calls))
 
 
-def serialize_registry(path):
+def serialize_registry():
     return [
         {
             'description': desc,
@@ -61,6 +61,7 @@ class RegisteredTimer(Timer):
     _CALLER_STACK_INDEX = 1
 
     def __init__(self, desc, verbose=False, registry=None):
+        import datetime
         from harrison.util.inspectlib import stack_frame_info
 
         # Get information about the caller so we can avoid Timer collisions and

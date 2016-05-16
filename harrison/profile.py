@@ -7,7 +7,7 @@ def profile(message=None, verbose=False):
 
     """
     import functools
-    from harrison import RegisteredTimer
+    from harrison.registered_timer import RegisteredTimer
 
     # Adjust the call stack index for RegisteredTimer so the call is Timer use
     # is properly attributed.
