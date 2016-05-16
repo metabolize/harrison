@@ -36,6 +36,26 @@ timer.stop()
 print timer.elapsed_time_s
 ```
 
+You can also time each execution of a function using a decorator:
+
+```py
+from harrison import profile
+
+@profile('Describes the function')
+def some_function():
+    pass
+
+# Without args, the function name (e.g. 'some_function') will be used
+# as the description.
+@profile()
+def another_function():
+    pass
+```
+
+You can also use `RegisteredTimer`, which groups together a bunch of named
+timers, provides utilities for serializing their times, and an optional global
+timer registry.
+
 Named after John Harrison, the English carpenter and clockmaker who
 invented the [marine chronometer][].
 

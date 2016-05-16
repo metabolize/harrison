@@ -19,8 +19,9 @@ setup(
     long_description=long_description,
     url='https://github.com/bodylabs/harrison',
     license='MIT',
-    py_modules=[
+    packages=[
         'harrison',
+        'harrison/util',
     ],
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
