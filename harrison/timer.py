@@ -75,7 +75,6 @@ class TimeoutTimer(Timer):
         if self.timeout:
             old_timeout = signal.alarm(self.timeout)
             if old_timeout:
-                signal.alarm(old_timeout)
                 raise NotImplementedError('Nested TimeoutTimers are not supported.')
             signal.signal(signal.SIGALRM, self.raise_timeout)
         return super(TimeoutTimer, self).start()
