@@ -45,3 +45,39 @@ class Timer(object):
         if self._verbose:
             desc = '{}: '.format(self.description) if self.description else ''
             print '{}{:.2f} ms'.format(desc, self.elapsed_time_ms)
+
+class TimeoutError(Exception):
+    pass
+
+class TimeoutTimer(Timer):
+    '''
+    Same as Timer but if given a timeout keyword argument, it will raise a
+    TimeoutError if not exitted within that number of seconds.
+    '''
+    def __init__(self, *args, **kwargs):
+        self.timeout = kwargs.pop('timeout', None)
+        super(TimeoutTimer, self).__init__(*args, **kwargs)
+
+    def raise_timeout(self, signal=None, stack_frame=None, msg=None):
+        _ = (signal, stack_frame) # for pylint
+        if msg is None:
+            msg = self.description + ' - Timed out after {} seconds.'.format(
+                self.timeout
+            )
+        raise TimeoutError(msg)
+
+    def start(self):
+        import signal
+        if self.timeout:
+            old_timeout = signal.alarm(self.timeout)
+            if old_timeout:
+                signal.alarm(old_timeout)
+                raise NotImplementedError('Nested TimeoutTimers are not supported.')
+            signal.signal(signal.SIGALRM, self.raise_timeout)
+        return super(TimeoutTimer, self).start()
+
+    def stop(self):
+        import signal
+        if self.timeout:
+            signal.alarm(0)
+        return super(TimeoutTimer, self).stop()
