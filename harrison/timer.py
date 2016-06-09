@@ -51,12 +51,16 @@ class TimeoutError(Exception):
 
 class TimeoutTimer(Timer):
     '''
-    Same as Timer but if given a timeout keyword argument, it will raise a
+    Same as Timer but takes a timeout argument. It will raise a
     TimeoutError if not exitted within that number of seconds.
+    Timer class arguments must be passed using keyword arguments.
+
+    If another TimeoutTimer is already set (or something else that uses alarm signals)
+    when the timer is started, a NotImplementedError will be raised.
     '''
-    def __init__(self, *args, **kwargs):
-        self.timeout = kwargs.pop('timeout', None)
-        super(TimeoutTimer, self).__init__(*args, **kwargs)
+    def __init__(self, timeout, **kwargs):
+        self.timeout = timeout
+        super(TimeoutTimer, self).__init__(**kwargs)
 
     def raise_timeout(self, signal=None, stack_frame=None, msg=None):
         _ = (signal, stack_frame) # for pylint
