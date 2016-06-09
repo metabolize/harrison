@@ -24,6 +24,7 @@ class TestTimeoutTimer(unittest.TestCase):
 
     @staticmethod
     def expected_timeout(desc='', verbose=True, timeout=None):
+        _ = (desc, verbose) # for pylint
         if timeout is None:
             return 0
         return timeout
