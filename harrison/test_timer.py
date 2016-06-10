@@ -53,7 +53,6 @@ class TestTimeoutTimer(unittest.TestCase):
         self.assertEqual('a_random_return_value', will_not_time_out())
 
     def test_two_timeouts_raises(self):
-        import signal
         def uses_nested_timeouts():
             with TimeoutTimer(5):
                 with TimeoutTimer(3):
