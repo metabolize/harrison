@@ -34,7 +34,11 @@ def stack_frame_info(stacklevel):
         raise ValueError('A stacklevel less than 1 is pointless')
 
     frame, filename, line_number, function_name, _, _ = inspect.stack()[stacklevel]
-    module_name = inspect.getmodule(frame).__name__
+    module = inspect.getmodule(frame) # it is possible for getmodule to return None
+    if module is not None:
+        module_name = module.__name__
+    else:
+        module_name = ""
 
     return Where(
         filename=filename,
