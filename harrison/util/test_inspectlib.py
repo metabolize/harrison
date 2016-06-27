@@ -33,4 +33,4 @@ class TestStackFrame(unittest.TestCase):
     @mock.patch('inspect.getmodule')
     def test_getmodule_return_None_works(self, mock_getmodule):
         mock_getmodule.return_value = None
-        there = stack_frame_test_func(1)
+        stack_frame_test_func(1)
