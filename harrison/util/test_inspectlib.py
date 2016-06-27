@@ -1,4 +1,5 @@
 import unittest
+import mock
 from harrison.util.inspectlib import stack_frame_info
 
 def stack_frame_test_func(stacklevel):
@@ -28,3 +29,8 @@ class TestStackFrame(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             stack_frame_test_func(0)
+
+    @mock.patch('inspect.getmodule')
+    def test_stack_frame_info_works_when_module_can_not_be_identified(self, mock_getmodule):
+        mock_getmodule.return_value = None
+        stack_frame_test_func(1)
