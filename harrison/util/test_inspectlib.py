@@ -31,6 +31,6 @@ class TestStackFrame(unittest.TestCase):
             stack_frame_test_func(0)
 
     @mock.patch('inspect.getmodule')
-    def test_getmodule_return_None_works(self, mock_getmodule):
+    def test_stack_frame_info_works_when_module_can_not_be_identified(self, mock_getmodule):
         mock_getmodule.return_value = None
         stack_frame_test_func(1)
