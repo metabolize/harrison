@@ -1,14 +1,8 @@
-# https://coderwall.com/p/qawuyq
-# Thanks James.
-
-try:
-    import pypandoc
-    long_description = pypandoc.convert('README.md', 'rst')
-except (IOError, ImportError):
-    long_description = ''
-    print('warning: pandoc or pypandoc does not seem to be installed; using empty long_description')
-
+import os
 from setuptools import setup
+
+with open(os.path.join(os.path.dirname(__file__), 'README.md'), 'r') as f:
+    long_description = f.read()
 
 setup(
     name='metaboharrison',
@@ -17,7 +11,8 @@ setup(
     author_email='david.smith@bodylabs.com, paul.melnikow@bodylabs.com',
     description='Time a block of code',
     long_description=long_description,
-    url='https://github.com/bodylabs/harrison',
+    long_description_content_type='text/markdown',
+    url='https://github.com/metabolize/harrison',
     license='MIT',
     packages=[
         'harrison',
