@@ -44,7 +44,7 @@ class Timer(object):
         self.stop()
         if self._verbose:
             desc = '{}: '.format(self.description) if self.description else ''
-            print '{}{:.2f} ms'.format(desc, self.elapsed_time_ms)
+            print('{}{:.2f} ms'.format(desc, self.elapsed_time_ms))
 
 class TimeoutError(Exception):
     pass
