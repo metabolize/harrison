@@ -3,6 +3,16 @@ harrison
 
 Time a block of code.
 
+[![version](https://img.shields.io/pypi/v/harrison?style=flat-square)][pypi]
+[![python version](https://img.shields.io/pypi/pyversions/harrison?style=flat-square)][pypi]
+[![license](https://img.shields.io/pypi/l/harrison?style=flat-square)][pypi]
+[![build](https://img.shields.io/circleci/project/github/lace/harrison/master?style=flat-square)][build]
+[![code style](https://img.shields.io/badge/code%20style-black-black?style=flat-square)][black]
+
+[pypi]: https://pypi.org/project/harrison/
+[build]: https://circleci.com/gh/metabolize/harrison/tree/master
+[black]: https://black.readthedocs.io/en/stable/
+
 Use as the context expression of a `with` statement:
 
 ```pyconsole
