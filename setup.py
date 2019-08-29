@@ -5,10 +5,10 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md'), 'r') as f:
     long_description = f.read()
 
 setup(
-    name='metaboharrison',
+    name='harrison',
     version=__import__('harrison').__version__,
-    author='Body Labs',
-    author_email='david.smith@bodylabs.com, paul.melnikow@bodylabs.com',
+    author='Body Labs, Metabolize',
+    author_email='github@paulmelnikow.com',
     description='Time a block of code',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -18,7 +18,6 @@ setup(
         'harrison',
         'harrison/util',
     ],
-    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',

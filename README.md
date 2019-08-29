@@ -3,6 +3,16 @@ harrison
 
 Time a block of code.
 
+[![version](https://img.shields.io/pypi/v/harrison?style=flat-square)][pypi]
+[![python version](https://img.shields.io/pypi/pyversions/harrison?style=flat-square)][pypi]
+[![license](https://img.shields.io/pypi/l/harrison?style=flat-square)][pypi]
+[![build](https://img.shields.io/circleci/project/github/metabolize/harrison/master?style=flat-square)][build]
+[![code style](https://img.shields.io/badge/code%20style-black-black?style=flat-square)][black]
+
+[pypi]: https://pypi.org/project/harrison/
+[build]: https://circleci.com/gh/metabolize/harrison/tree/master
+[black]: https://black.readthedocs.io/en/stable/
+
 Use as the context expression of a `with` statement:
 
 ```pyconsole
@@ -85,8 +95,8 @@ rake lint
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/bodylabs/harrison/issues
-- Source Code: https://github.com/bodylabs/harrison
+- Issue Tracker: https://github.com/metabolize/harrison/issues
+- Source Code: https://github.com/metabolize/harrison
 
 Pull requests welcome!
 
@@ -95,6 +105,17 @@ Support
 -------
 
 If you are having issues, please let us know.
+
+
+Acknowledgements
+----------------
+
+This project was packaged by [Paul Melnikow][] while at [Body Labs][]. Thanks
+to Body Labs for the repository transfer.
+
+
+[paul melnikow]: https://github.com/paulmelnikow
+[body labs]: https://github.com/bodylabs
 
 
 License
