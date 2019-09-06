@@ -1,16 +1,16 @@
 import os
 from setuptools import setup
 
-with open(os.path.join(os.path.dirname(__file__), 'README.md'), 'r') as f:
-    long_description = f.read()
+version_info = {}
+exec(open("harrison/package_version.py").read(), version_info)
 
 setup(
     name='harrison',
-    version=__import__('harrison').__version__,
+    version=version_info["__version__"],
     author='Body Labs, Metabolize',
     author_email='github@paulmelnikow.com',
     description='Time a block of code',
-    long_description=long_description,
+    long_description=open("README.md").read(),
     long_description_content_type='text/markdown',
     url='https://github.com/metabolize/harrison',
     license='MIT',

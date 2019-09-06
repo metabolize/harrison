@@ -40,9 +40,17 @@ jobs:
 
       # - run:
       #     name: Check lint
+      #     when: 'always'
       #     command: |
       #       . venv/bin/activate
       #       rake lint
+
+      - run:
+          name: Check that the installer can run
+          when: 'always'
+          command: |
+            . venv/bin/activate
+            python setup.py install
 
   python3:
     docker:
@@ -84,9 +92,17 @@ jobs:
 
       # - run:
       #     name: Check lint
+      #     when: 'always'
       #     command: |
       #       . venv/bin/activate
       #       rake lint
+
+      - run:
+          name: Check that the installer can run
+          when: 'always'
+          command: |
+            . venv/bin/activate
+            python setup.py install
 
 workflows:
   version: 2
