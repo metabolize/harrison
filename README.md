@@ -87,8 +87,8 @@ Development
 -----------
 
 ```sh
-pip install -r requirements_dev.txt
-rake lint
+./dev.py init
+./dev.py test
 ```
 
 

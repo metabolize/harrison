@@ -8,19 +8,11 @@ jobs:
       - checkout
 
       - run:
-          name: Install ruby dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -qq ruby
-            sudo gem install rake
-
-      - run:
           name: Install python dependencies
           command: |
             mkdir -p venv
             virtualenv venv
             . venv/bin/activate
-            rake install_style_config
             # Hack to disable the progress bar
             set -o pipefail; pip install -U 'numpy>=1.10.1' 'scipy>=0.14.1' | cat
             set -o pipefail; pip install -Ur requirements_dev.txt | cat
@@ -37,14 +29,14 @@ jobs:
           name: Run tests
           command: |
             . venv/bin/activate
-            rake unittest
+            ./dev.py test
 
       # - run:
       #     name: Check lint
       #     when: 'always'
       #     command: |
       #       . venv/bin/activate
-      #       rake lint
+      #       ./dev.py lint
 
       - run:
           name: Check that the installer can run
@@ -62,19 +54,11 @@ jobs:
       - checkout
 
       - run:
-          name: Install ruby dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -qq ruby
-            sudo gem install rake
-
-      - run:
           name: Install python dependencies
           command: |
             mkdir -p venv
             virtualenv venv
             . venv/bin/activate
-            rake install_style_config
             # Hack to disable the progress bar
             set -o pipefail; pip install -U 'numpy>=1.10.1' 'scipy>=0.14.1' | cat
             set -o pipefail; pip install -Ur requirements_dev.txt | cat
@@ -91,14 +75,14 @@ jobs:
           name: Run tests
           command: |
             . venv/bin/activate
-            rake unittest
+            ./dev.py test
 
       # - run:
       #     name: Check lint
       #     when: 'always'
       #     command: |
       #       . venv/bin/activate
-      #       rake lint
+      #       ./dev.py lint
 
       - run:
           name: Check that the installer can run
