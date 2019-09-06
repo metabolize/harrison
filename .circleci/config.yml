@@ -58,7 +58,7 @@ jobs:
             virtualenv venv
             . venv/bin/activate
             # Hack to disable the progress bar
-            set -o pipefail; pip install --upgrade -r requirements_dev.txt | cat
+            set -o pipefail; pip install --upgrade -r requirements_dev_py3.txt | cat
 
       - run:
           name: Show versions

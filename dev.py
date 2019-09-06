@@ -19,7 +19,7 @@ def cli():
 @cli.command()
 def init():
     execute("pip2 install --upgrade -r requirements_dev.txt")
-    execute("pip3 install --upgrade -r requirements_dev.txt")
+    execute("pip3 install --upgrade -r requirements_dev_py3.txt")
 
 
 @cli.command()
