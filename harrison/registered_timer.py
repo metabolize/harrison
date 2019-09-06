@@ -1,4 +1,5 @@
-from harrison import Timer
+from __future__ import print_function
+from .timer import Timer
 
 
 shared_registry = {}
@@ -34,10 +35,7 @@ def aggregate_registry_timers():
 
 
 def print_registry(logger=None):
-    def printfn(m):
-        print m
-
-    log = logger.debug if logger else printfn
+    log = logger.debug if logger else print
     for desc, total, num_calls in aggregate_registry_timers():
         log('"{}": {} ms ({})'.format(desc, total, num_calls))
 
@@ -62,7 +60,7 @@ class RegisteredTimer(Timer):
 
     def __init__(self, desc, verbose=False, registry=None):
         import datetime
-        from harrison.util.inspectlib import stack_frame_info
+        from .util.inspectlib import stack_frame_info
 
         # Get information about the caller so we can avoid Timer collisions and
         # provide more informative output. Entry 0 is the current frame.

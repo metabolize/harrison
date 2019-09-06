@@ -19,7 +19,7 @@ Use as the context expression of a `with` statement:
 >>> from harrison import Timer
 >>> with Timer() as t:
 >>>     ...
->>> print t.elapsed_time_ms
+>>> print(t.elapsed_time_ms)
 12345
 ```
 
@@ -39,11 +39,11 @@ timer = Timer()
 timer.start()
 
 some_expensive_function(...)
-print timer.elapsed_time_s
+print(timer.elapsed_time_s)
 
 another_expensive_function(...)
 timer.stop()
-print timer.elapsed_time_s
+print(timer.elapsed_time_s)
 ```
 
 You can also time each execution of a function using a decorator:
