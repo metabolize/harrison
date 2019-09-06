@@ -14,9 +14,7 @@ jobs:
             virtualenv venv
             . venv/bin/activate
             # Hack to disable the progress bar
-            set -o pipefail; pip install -U 'numpy>=1.10.1' 'scipy>=0.14.1' | cat
-            set -o pipefail; pip install -Ur requirements_dev.txt | cat
-            set -o pipefail; pip install -Ue . | cat
+            set -o pipefail; pip install --upgrade -r requirements_dev.txt | cat
 
       - run:
           name: Show versions
@@ -60,9 +58,7 @@ jobs:
             virtualenv venv
             . venv/bin/activate
             # Hack to disable the progress bar
-            set -o pipefail; pip install -U 'numpy>=1.10.1' 'scipy>=0.14.1' | cat
-            set -o pipefail; pip install -Ur requirements_dev.txt | cat
-            set -o pipefail; pip install -Ue . | cat
+            set -o pipefail; pip install --upgrade -r requirements_dev_py3.txt | cat
 
       - run:
           name: Show versions
@@ -83,6 +79,13 @@ jobs:
       #     command: |
       #       . venv/bin/activate
       #       ./dev.py lint
+
+      - run:
+          name: Check code format
+          when: always
+          command: |
+            . venv/bin/activate
+            ./dev.py black-check
 
       - run:
           name: Check that the installer can run

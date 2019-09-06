@@ -27,8 +27,7 @@ def aggregate_registry_timers():
         total_elapsed_ms = sum(t.elapsed_time_ms for t in group)
         first_start_time = min(t.start_time for t in group)
         # We'll use the first start time as a sort key.
-        aggregate_timers.append(
-            (first_start_time, (k, total_elapsed_ms, num_calls)))
+        aggregate_timers.append((first_start_time, (k, total_elapsed_ms, num_calls)))
 
     aggregate_timers.sort()
     return zip(*aggregate_timers)[1]
@@ -42,11 +41,7 @@ def print_registry(logger=None):
 
 def serialize_registry():
     return [
-        {
-            'description': desc,
-            'total_elapsed_ms': total,
-            'num_calls': num_calls,
-        }
+        {"description": desc, "total_elapsed_ms": total, "num_calls": num_calls}
         for desc, total, num_calls in aggregate_registry_timers()
     ]
 
@@ -68,10 +63,9 @@ class RegisteredTimer(Timer):
 
         self._creation_time = datetime.datetime.now()
 
-        self._id = '{}:{}:{}'.format(
-            self._where.filename,
-            self._where.line_number,
-            self._creation_time)
+        self._id = "{}:{}:{}".format(
+            self._where.filename, self._where.line_number, self._creation_time
+        )
 
         _registry = registry if registry is not None else shared_registry
         _registry[self._id] = self
@@ -84,4 +78,5 @@ class RegisteredTimer(Timer):
             self._where.module_name,
             self._where.function_name,
             self.desc,
-            self.elapsed_time_ms)
+            self.elapsed_time_ms,
+        )
