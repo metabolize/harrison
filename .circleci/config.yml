@@ -51,7 +51,7 @@ jobs:
           when: 'always'
           command: |
             . venv/bin/activate
-            python setup.py install
+            pip install .
 
   python3:
     docker:
@@ -104,7 +104,7 @@ jobs:
           when: 'always'
           command: |
             . venv/bin/activate
-            python setup.py install
+            pip install .
 
 workflows:
   version: 2
