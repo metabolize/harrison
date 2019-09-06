@@ -85,11 +85,11 @@ jobs:
       #       ./dev.py lint
 
       - run:
-        name: Check code format
-        when: always
-        command: |
-          . venv/bin/activate
-          ./dev.py black-check
+          name: Check code format
+          when: always
+          command: |
+            . venv/bin/activate
+            ./dev.py black-check
 
       - run:
           name: Check that the installer can run
