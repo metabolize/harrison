@@ -85,6 +85,13 @@ jobs:
       #       ./dev.py lint
 
       - run:
+        name: Check code format
+        when: always
+        command: |
+          . venv/bin/activate
+          ./dev.py black-check
+
+      - run:
           name: Check that the installer can run
           when: always
           # This is a nice idea but unfortunately tends to fail silently.

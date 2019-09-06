@@ -21,6 +21,7 @@ def profile(message=None, verbose=False):
         def wrapped_fn(*args, **kwargs):
             with DecoratorTimer(desc=desc, verbose=verbose):
                 return fn(*args, **kwargs)
+
         return wrapped_fn
 
     return wrapper
