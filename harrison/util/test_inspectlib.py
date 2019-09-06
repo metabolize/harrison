@@ -1,36 +1,34 @@
-import unittest
-import mock
-from harrison.util.inspectlib import stack_frame_info
+import re
+import pytest
+from .inspectlib import stack_frame_info
 
 def stack_frame_test_func(stacklevel):
     return stack_frame_info(stacklevel)
 
-class TestStackFrame(unittest.TestCase):
+def test_stack_frame_info():
+    there = stack_frame_test_func(1)
+    # Argh, might be .pyc, or might be .py.
+    print(there.filename)
+    assert re.search('test_inspectlib.pyc?', there.filename)
+    assert there.module_name == __name__
+    assert there.function_name == 'stack_frame_test_func'
 
-    def test_stack_frame_info(self):
-        there = stack_frame_test_func(1)
-        # Argh, might be .pyc, or might be .py.
-        self.assertRegexpMatches(there.filename, 'test_inspectlib.pyc?')
-        self.assertEqual(there.module_name, __name__)
-        self.assertEqual(there.function_name, 'stack_frame_test_func')
+    here = stack_frame_test_func(2)
+    # Argh, might be .pyc, or might be .py.
+    assert re.search('test_inspectlib.pyc?', here.filename)
+    assert here.module_name == __name__
+    assert here.function_name == 'test_stack_frame_info'
 
-        here = stack_frame_test_func(2)
-        # Argh, might be .pyc, or might be .py.
-        self.assertRegexpMatches(here.filename, 'test_inspectlib.pyc?')
-        self.assertEqual(here.module_name, __name__)
-        self.assertEqual(here.function_name, 'test_stack_frame_info')
+    assert there.line_number < here.line_number
 
-        self.assertLess(there.line_number, here.line_number)
+    assert re.search(
+        r'test_inspectlib.py:\d+ in \S*test_inspectlib.test_stack_frame_info$',
+        here.pretty)
 
-        self.assertRegexpMatches(
-            here.pretty,
-            r'test_inspectlib.py:\d+ in \S*test_inspectlib.test_stack_frame_info$'
-        )
+    with pytest.raises(ValueError):
+        stack_frame_test_func(0)
 
-        with self.assertRaises(ValueError):
-            stack_frame_test_func(0)
-
-    @mock.patch('inspect.getmodule')
-    def test_stack_frame_info_works_when_module_can_not_be_identified(self, mock_getmodule):
-        mock_getmodule.return_value = None
-        stack_frame_test_func(1)
+def test_stack_frame_info_works_when_module_can_not_be_identified(mocker):
+    mock_getmodule = mocker.patch('inspect.getmodule')
+    mock_getmodule.return_value = None
+    stack_frame_test_func(1)
