@@ -1,4 +1,4 @@
-pylint==1.5.4
+pylint==2.4.2
 mock==3.0.5
 pytest==4.6.5
 pytest-mock==1.11.0
