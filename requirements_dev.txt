@@ -1,6 +1,6 @@
 pylint==1.5.4
 mock==3.0.5
 pytest==4.6.5
-pytest-mock==1.11.0
+pytest-mock==1.13.0
 click>=7.0,<8.0
 executor>=21.0
