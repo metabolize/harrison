@@ -1,3 +1,0 @@
--r requirements_dev.txt
-
-black==19.10b0
