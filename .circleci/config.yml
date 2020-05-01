@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  python2:
+  main:
     docker:
-      - image: circleci/python:2
+      - image: circleci/python:3
 
     steps:
       - checkout
@@ -37,50 +37,6 @@ jobs:
       #       ./dev.py lint
 
       - run:
-          name: Check that the installer can run
-          when: always
-          # This is a nice idea but unfortunately tends to fail silently.
-          command: |
-            . venv/bin/activate
-            pip install .
-
-  python3:
-    docker:
-      - image: circleci/python:3
-
-    steps:
-      - checkout
-
-      - run:
-          name: Install python dependencies
-          command: |
-            mkdir -p venv
-            virtualenv venv
-            . venv/bin/activate
-            # Hack to disable the progress bar
-            set -o pipefail; pip install --upgrade -r requirements_dev_py3.txt | cat
-
-      - run:
-          name: Show versions
-          command: |
-            . venv/bin/activate
-            python --version
-            pip freeze
-
-      - run:
-          name: Run tests
-          command: |
-            . venv/bin/activate
-            ./dev.py test
-
-      # - run:
-      #     name: Check lint
-      #     when: 'always'
-      #     command: |
-      #       . venv/bin/activate
-      #       ./dev.py lint
-
-      - run:
           name: Check code format
           when: always
           command: |
@@ -90,7 +46,8 @@ jobs:
       - run:
           name: Check that the installer can run
           when: always
-          # This is a nice idea but unfortunately tends to fail silently.
+          # Testing this is a nice idea but unfortunately it tends to fail
+          # silently.
           command: |
             . venv/bin/activate
             pip install .
