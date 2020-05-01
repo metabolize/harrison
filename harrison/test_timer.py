@@ -1,6 +1,6 @@
 import signal
 import pytest
-from .timer import TimeoutTimer, TimeoutError
+from .timer import TimeoutError, TimeoutTimer
 
 TEST_KWARGS_LIST = [
     {"timeout": 5},

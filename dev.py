@@ -28,24 +28,18 @@ def clean():
 
 @cli.command()
 def test():
-    execute("python -m pytest")
+    execute("python3 -m pytest")
 
 
 @cli.command()
 def coverage():
-    execute("pytest --cov=harrison")
+    execute("python3 -m pytest --cov=harrison")
 
 
 @cli.command()
 def coverage_report():
-    execute("coverage html")
+    execute("python3 -m coverage html")
     execute("open htmlcov/index.html")
-
-
-@cli.command()
-def test_both():
-    execute("python2 -m pytest")
-    execute("python3 -m pytest")
 
 
 @cli.command()
@@ -66,7 +60,7 @@ def black_check():
 @cli.command()
 def publish():
     execute("rm -rf dist/")
-    execute("python setup.py sdist")
+    execute("python3 setup.py sdist bdist_wheel")
     execute("twine upload dist/*")
 
 
