@@ -46,7 +46,6 @@ def serialize_registry():
 
 
 class RegisteredTimer(Timer):
-
     # The stack index of the caller. Using this we can record where the Timer
     # object was istantiated. A subclass may want to override this index if
     # they're adding additional levels of calls, e.g. via a decorator.
